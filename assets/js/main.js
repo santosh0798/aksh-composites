@@ -74,72 +74,23 @@
         values: [11, 300],
         slide: function (event, ui) {
           $(".price-ranger .ranger-min-max-block .min").val(
-            "$" + ui.values[0]
+              "$" + ui.values[0]
           );
           $(".price-ranger .ranger-min-max-block .max").val(
-            "$" + ui.values[1]
+              "$" + ui.values[1]
           );
         },
       });
       $(".price-ranger .ranger-min-max-block .min").val(
-        "$" + $(".price-ranger #slider-range").slider("values", 0)
+          "$" + $(".price-ranger #slider-range").slider("values", 0)
       );
       $(".price-ranger .ranger-min-max-block .max").val(
-        "$" + $(".price-ranger #slider-range").slider("values", 1)
+          "$" + $(".price-ranger #slider-range").slider("values", 1)
       );
     }
   }
 
 
-
-
-  // Cart Touch Spin
-  if ($(".quantity-spinner").length) {
-    $("input.quantity-spinner").TouchSpin({
-      verticalbuttons: true,
-    });
-  }
-
-
-  // custom coursor
-  if ($(".custom-cursor").length) {
-
-    var cursor = document.querySelector('.custom-cursor__cursor');
-    var cursorinner = document.querySelector('.custom-cursor__cursor-two');
-    var a = document.querySelectorAll('a');
-
-    document.addEventListener('mousemove', function (e) {
-      var x = e.clientX;
-      var y = e.clientY;
-      cursor.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`
-    });
-
-    document.addEventListener('mousemove', function (e) {
-      var x = e.clientX;
-      var y = e.clientY;
-      cursorinner.style.left = x + 'px';
-      cursorinner.style.top = y + 'px';
-    });
-
-    document.addEventListener('mousedown', function () {
-      cursor.classList.add('click');
-      cursorinner.classList.add('custom-cursor__innerhover')
-    });
-
-    document.addEventListener('mouseup', function () {
-      cursor.classList.remove('click')
-      cursorinner.classList.remove('custom-cursor__innerhover')
-    });
-
-    a.forEach(item => {
-      item.addEventListener('mouseover', () => {
-        cursor.classList.add('custom-cursor__hover');
-      });
-      item.addEventListener('mouseleave', () => {
-        cursor.classList.remove('custom-cursor__hover');
-      });
-    })
-  }
 
 
   if ($(".listing-details__contact-info-phone").length) {
@@ -174,27 +125,6 @@
 
 
 
-  if ($("#datepicker").length) {
-    $("#datepicker").datepicker();
-  }
-
-  if ($("#datepicker2").length) {
-    $("#datepicker2").datepicker();
-  }
-
-  if ($("#datepicker-inline").length) {
-    $("#datepicker-inline").datepicker();
-  }
-
-  $('input[name="time"]').ptTimeSelect();
-
-  if ($(".banner-bg-slide").length) {
-    $(".banner-bg-slide").each(function () {
-      var Self = $(this);
-      var bgSlideOptions = Self.data("options");
-      var bannerTwoSlides = Self.vegas(bgSlideOptions);
-    });
-  }
 
   //Pricing Tabs
   if ($(".pricing-tabs").length) {
@@ -231,58 +161,58 @@
   // Popular Causes Progress Bar
   if ($(".count-bar").length) {
     $(".count-bar").appear(
-      function () {
-        var el = $(this);
-        var percent = el.data("percent");
-        $(el).css("width", percent).addClass("counted");
-      }, {
-        accY: -50
-      }
+        function () {
+          var el = $(this);
+          var percent = el.data("percent");
+          $(el).css("width", percent).addClass("counted");
+        }, {
+          accY: -50
+        }
     );
   }
 
   //Progress Bar / Levels
   if ($(".progress-levels .progress-box .bar-fill").length) {
     $(".progress-box .bar-fill").each(
-      function () {
-        $(".progress-box .bar-fill").appear(function () {
-          var progressWidth = $(this).attr("data-percent");
-          $(this).css("width", progressWidth + "%");
-        });
-      }, {
-        accY: 0
-      }
+        function () {
+          $(".progress-box .bar-fill").appear(function () {
+            var progressWidth = $(this).attr("data-percent");
+            $(this).css("width", progressWidth + "%");
+          });
+        }, {
+          accY: 0
+        }
     );
   }
 
   //Fact Counter + Text Count
   if ($(".count-box").length) {
     $(".count-box").appear(
-      function () {
-        var $t = $(this),
-          n = $t.find(".count-text").attr("data-stop"),
-          r = parseInt($t.find(".count-text").attr("data-speed"), 10);
+        function () {
+          var $t = $(this),
+              n = $t.find(".count-text").attr("data-stop"),
+              r = parseInt($t.find(".count-text").attr("data-speed"), 10);
 
-        if (!$t.hasClass("counted")) {
-          $t.addClass("counted");
-          $({
-            countNum: $t.find(".count-text").text()
-          }).animate({
-            countNum: n
-          }, {
-            duration: r,
-            easing: "linear",
-            step: function () {
-              $t.find(".count-text").text(Math.floor(this.countNum));
-            },
-            complete: function () {
-              $t.find(".count-text").text(this.countNum);
-            }
-          });
+          if (!$t.hasClass("counted")) {
+            $t.addClass("counted");
+            $({
+              countNum: $t.find(".count-text").text()
+            }).animate({
+              countNum: n
+            }, {
+              duration: r,
+              easing: "linear",
+              step: function () {
+                $t.find(".count-text").text(Math.floor(this.countNum));
+              },
+              complete: function () {
+                $t.find(".count-text").text(this.countNum);
+              }
+            });
+          }
+        }, {
+          accY: 0
         }
-      }, {
-        accY: 0
-      }
     );
   }
 
@@ -298,20 +228,20 @@
       Self.find(".accrodion.active").find(".accrodion-content").show();
       accordion.each(function () {
         $(this)
-          .find(".accrodion-title")
-          .on("click", function () {
-            if ($(this).parent().hasClass("active") === false) {
-              $(".accrodion-grp." + accrodionName)
-                .find(".accrodion")
-                .removeClass("active");
-              $(".accrodion-grp." + accrodionName)
-                .find(".accrodion")
-                .find(".accrodion-content")
-                .slideUp();
-              $(this).parent().addClass("active");
-              $(this).parent().find(".accrodion-content").slideDown();
-            }
-          });
+            .find(".accrodion-title")
+            .on("click", function () {
+              if ($(this).parent().hasClass("active") === false) {
+                $(".accrodion-grp." + accrodionName)
+                    .find(".accrodion")
+                    .removeClass("active");
+                $(".accrodion-grp." + accrodionName)
+                    .find(".accrodion")
+                    .find(".accrodion-content")
+                    .slideUp();
+                $(this).parent().addClass("active");
+                $(this).parent().find(".accrodion-content").slideDown();
+              }
+            });
       });
     });
   }
@@ -322,9 +252,9 @@
       var target = $(this).attr("data-target");
       // animate
       $("html, body").animate({
-          scrollTop: $(target).offset().top
-        },
-        1000
+            scrollTop: $(target).offset().top
+          },
+          1000
       );
 
       return false;
@@ -353,14 +283,14 @@
       submitHandler: function (form) {
         // sending value with ajax request
         $.post(
-          $(form).attr("action"),
-          $(form).serialize(),
-          function (response) {
-            $(form).parent().find(".result").append(response);
-            $(form).find('input[type="text"]').val("");
-            $(form).find('input[type="email"]').val("");
-            $(form).find("textarea").val("");
-          }
+            $(form).attr("action"),
+            $(form).serialize(),
+            function (response) {
+              $(form).parent().find(".result").append(response);
+              $(form).find('input[type="text"]').val("");
+              $(form).find('input[type="email"]').val("");
+              $(form).find("textarea").val("");
+            }
         );
         return false;
       }
@@ -482,7 +412,7 @@
 
   if ($(".mobile-nav__container .main-menu__list").length) {
     let dropdownAnchor = $(
-      ".mobile-nav__container .main-menu__list .dropdown > a"
+        ".mobile-nav__container .main-menu__list .dropdown > a"
     );
     dropdownAnchor.each(function () {
       let self = $(this);
@@ -547,14 +477,14 @@
   if ($("#donate-amount__predefined").length) {
     let donateInput = $("#donate-amount");
     $("#donate-amount__predefined")
-      .find("li")
-      .on("click", function (e) {
-        e.preventDefault();
-        let amount = $(this).find("a").text();
-        donateInput.val(amount);
-        $("#donate-amount__predefined").find("li").removeClass("active");
-        $(this).addClass("active");
-      });
+        .find("li")
+        .on("click", function (e) {
+          e.preventDefault();
+          let amount = $(this).find("a").text();
+          donateInput.val(amount);
+          $("#donate-amount__predefined").find("li").removeClass("active");
+          $(this).addClass("active");
+        });
   }
 
   if ($(".thm-accordion").length) {
@@ -574,8 +504,8 @@
         let accordionItem = $(this).parent();
         if (false === accordionItem.hasClass("active-item")) {
           $("#" + accordionID)
-            .find(".thm-accordion__item")
-            .removeClass("active-item");
+              .find(".thm-accordion__item")
+              .removeClass("active-item");
           accordionItem.addClass("active-item");
           mainAccordionContent.slideUp();
           accordionItem.find(".thm-accordion__content").slideDown();
@@ -587,16 +517,16 @@
   $(".add").on("click", function () {
     if ($(this).prev().val() < 999) {
       $(this)
-        .prev()
-        .val(+$(this).prev().val() + 1);
+          .prev()
+          .val(+$(this).prev().val() + 1);
     }
   });
   $(".sub").on("click", function () {
     if ($(this).next().val() > 1) {
       if ($(this).next().val() > 1)
         $(this)
-        .next()
-        .val(+$(this).next().val() - 1);
+            .next()
+            .val(+$(this).next().val() - 1);
     }
   });
 
@@ -609,21 +539,21 @@
         return false;
       } else {
         target
-          .parents(".tabs-box")
-          .find(".tab-buttons")
-          .find(".tab-btn")
-          .removeClass("active-btn");
+            .parents(".tabs-box")
+            .find(".tab-buttons")
+            .find(".tab-btn")
+            .removeClass("active-btn");
         $(this).addClass("active-btn");
         target
-          .parents(".tabs-box")
-          .find(".tabs-content")
-          .find(".tab")
-          .fadeOut(0);
+            .parents(".tabs-box")
+            .find(".tabs-content")
+            .find(".tab")
+            .fadeOut(0);
         target
-          .parents(".tabs-box")
-          .find(".tabs-content")
-          .find(".tab")
-          .removeClass("active-tab");
+            .parents(".tabs-box")
+            .find(".tabs-content")
+            .find(".tab")
+            .removeClass("active-tab");
         $(target).fadeIn(300);
         $(target).addClass("active-tab");
       }
@@ -720,35 +650,35 @@
     }
     if ($(".post-filter").length) {
       $(".post-filter li")
-        .children(".filter-text")
-        .on("click", function () {
-          var Self = $(this);
-          var selector = Self.parent().attr("data-filter");
-          $(".post-filter li").removeClass("active");
-          Self.parent().addClass("active");
-          $(".filter-layout").isotope({
-            filter: selector,
-            animationOptions: {
-              duration: 500,
-              easing: "linear",
-              queue: false
-            }
+          .children(".filter-text")
+          .on("click", function () {
+            var Self = $(this);
+            var selector = Self.parent().attr("data-filter");
+            $(".post-filter li").removeClass("active");
+            Self.parent().addClass("active");
+            $(".filter-layout").isotope({
+              filter: selector,
+              animationOptions: {
+                duration: 500,
+                easing: "linear",
+                queue: false
+              }
+            });
+            return false;
           });
-          return false;
-        });
     }
 
     if ($(".post-filter.has-dynamic-filters-counter").length) {
       // var allItem = $('.single-filter-item').length;
       var activeFilterItem = $(".post-filter.has-dynamic-filters-counter").find(
-        "li"
+          "li"
       );
       activeFilterItem.each(function () {
         var filterElement = $(this).data("filter");
         var count = $(".filter-layout").find(filterElement).length;
         $(this)
-          .children(".filter-text")
-          .append('<span class="count">' + count + "</span>");
+            .children(".filter-text")
+            .append('<span class="count">' + count + "</span>");
       });
     }
   }
@@ -815,13 +745,13 @@
         }
         var target = $(this);
         $("html, body")
-          .stop()
-          .animate({
-              scrollTop: $(target.attr("href")).offset().top - headerH + "px"
-            },
-            1200,
-            "easeInOutExpo"
-          );
+            .stop()
+            .animate({
+                  scrollTop: $(target.attr("href")).offset().top - headerH + "px"
+                },
+                1200,
+                "easeInOutExpo"
+            );
         anchor.removeClass("current");
         anchor.removeClass("current-menu-ancestor");
         anchor.removeClass("current_page_item");
@@ -847,9 +777,9 @@
             $(".one-page-scroll-menu").find("li").removeClass("current_page_item");
             $(".one-page-scroll-menu").find("li").removeClass("current-menu-parent");
             $(".one-page-scroll-menu")
-              .find("a[href*=\\#" + Sectionid + "]")
-              .parent()
-              .addClass("current");
+                .find("a[href*=\\#" + Sectionid + "]")
+                .parent()
+                .addClass("current");
           }
         });
       });
@@ -918,7 +848,7 @@
       // var allItem = $('.single-filter-item').length;
 
       var activeFilterItem = $(".post-filter.has-dynamic-filter-counter").find(
-        "li"
+          "li"
       );
 
       activeFilterItem.each(function () {
